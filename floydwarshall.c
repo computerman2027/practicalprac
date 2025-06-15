@@ -13,7 +13,12 @@ void printmat(int** arr, int n, int k)
     {
         for(j=0;j<n;j++)
         {
-            printf("%d\t",arr[i][j]);
+            if(arr[i][j]==INF)
+            {
+                printf("%7s\t","INF");
+            }
+            else
+            printf("%7d\t",arr[i][j]);
         }
         printf("\n");
     }
@@ -60,7 +65,7 @@ int main()
     scanf("%d", &V);
 
     int **arr = (int **)malloc(V * sizeof(int *));
-    print("Enter graph : ");
+    printf("Enter graph : ");
 
     for (i = 0; i < V; i++)
     {
@@ -76,7 +81,7 @@ int main()
     }
 
     clock_t s = clock();
-    flodywarshall(arr, V);
+    floydwarshall(arr, V);
     clock_t e = clock();
     double tt = ((double)(e - s)) / CLOCKS_PER_SEC;
     printf("Tiem taken : %lf s\n", tt);

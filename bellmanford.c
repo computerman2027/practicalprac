@@ -21,6 +21,7 @@ void bellmanFord(Edge *arr, int V, int E, int src)
     {
         dist[i] = INF;
     }
+    dist[src]=0;
 
     for (i = 1; i <= V - 1; i++)
     {
@@ -71,7 +72,7 @@ int main()
     scanf("%d", &V);
 
     int **arr = (int **)malloc(V * sizeof(int *));
-    print("Enter graph : ");
+    printf("Enter graph : ");
 
     for (i = 0; i < V; i++)
     {
@@ -98,6 +99,7 @@ int main()
                 edge[k].u = i;
                 edge[k].v = j;
                 edge[k].wt = arr[i][j];
+                k++;
             }
         }
     }
@@ -105,9 +107,9 @@ int main()
     printf("enter source : ");
     scanf("%d", &source);
     clock_t s = clock();
-    bellmanford(edge, V, E, source);
+    bellmanFord(edge, V, E, source);
     clock_t e = clock();
     double tt = ((double)(e - s)) / CLOCKS_PER_SEC;
-    printf("Tiem taken : %lf s\n", tt);
+    printf("Time taken : %lf s\n", tt);
     return 0;
 }
